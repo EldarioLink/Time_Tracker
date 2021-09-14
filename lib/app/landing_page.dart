@@ -17,6 +17,7 @@ class _LandingPageState extends State<LandingPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _updateUser(FirebaseAuth.instance.currentUser);
   }
 
   void _updateUser(User? user) {
