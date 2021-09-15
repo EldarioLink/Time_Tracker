@@ -16,10 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //Как мы знаем, каждый виджет во Flutter создается методом build
     return MaterialApp(
-        title: "Time Tracker",
-        theme: ThemeData(primarySwatch: Colors.indigo),
-        home: LandingPage(
-          auth: Auth(),
-        ));
+      title: "Time Tracker",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.indigo),
+      home: LandingPage(
+        auth: Auth(),
+      ),
+    );
   }
 }

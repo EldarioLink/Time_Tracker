@@ -2,18 +2,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthBase {
   User? get currentUser;
+  Stream<User?> authStateChanges();
   Future<User?> signInAnonymously();
   Future<void> signOut();
 }
 
+//implements - вы не наследуете код этого класса. Вы только наследуете тип.
 class Auth implements AuthBase {
   final _firebaseAuth = FirebaseAuth.instance;
+
+  @override
+  Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
+
   @override
   User? get currentUser => _firebaseAuth.currentUser;
+
   @override
   Future<User?> signInAnonymously() async {
-    final UserCredential = await _firebaseAuth.signInAnonymously();
-    return UserCredential.user;
+    final userCredential = await _firebaseAuth.signInAnonymously();
+    return userCredential.user;
   }
 
   @override
