@@ -26,6 +26,14 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  Future<void> _signInWithFacebook() async {
+    try {
+      await auth.signInWithFacebook();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     //Scaffold - это класс во флаттере, который предоставляет множество виджетов или, мы можем сказать, API, Drawer, SnackBar, AppBar и т. Д.
@@ -73,7 +81,7 @@ class SignInPage extends StatelessWidget {
             text: 'Sign in with Facebook',
             textColor: Colors.white,
             color: Color(0xFF334D92),
-            onPressed: () {},
+            onPressed: _signInWithFacebook,
           ),
           SizedBox(
             height: 8.0,
