@@ -12,7 +12,7 @@ class SocialSignInButton extends CustomRaisedButton {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset('images/google-logo.png'),
+              Image.asset(assetName),
               Text(
                 text,
                 style: TextStyle(
