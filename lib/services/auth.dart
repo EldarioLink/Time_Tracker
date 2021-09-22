@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+//  abstract клас-экземпляр которого невозможно создать. Абстрактные классы полезны для определения интерфейсов, часто с некоторой реализацией.
 abstract class AuthBase {
   User? get currentUser;
   Stream<User?> authStateChanges();
@@ -9,11 +10,11 @@ abstract class AuthBase {
   Future<User?> signInWithGoogle();
   Future<User?> signInWithFacebook();
   Future<User?> createUserWithEmailAndPassword(String email, String password);
-  Future<User?> signInWithEmailandPassword(String email, String password);
+  Future<User?> signInWithEmailAndPassword(String email, String password);
   Future<void> signOut();
 }
 
-//implements - вы не наследуете код этого класса. Вы только наследуете тип.
+//implements - вы НЕ наследуете код этого класса. Вы только наследуете тип.
 class Auth implements AuthBase {
   final _firebaseAuth = FirebaseAuth.instance;
 
@@ -23,6 +24,8 @@ class Auth implements AuthBase {
   @override
   User? get currentUser => _firebaseAuth.currentUser;
 
+//Future - объект, возвращаемый асинхронным методом. Когда future завершается, его значение готово к использованию.
+// Добавление ключевого слова async к функции заставляет ее возвращать Future.
   @override
   Future<User?> signInAnonymously() async {
     final userCredential = await _firebaseAuth.signInAnonymously();
@@ -84,7 +87,7 @@ class Auth implements AuthBase {
   }
 
   @override
-  Future<User?> signInWithEmailandPassword(
+  Future<User?> signInWithEmailAndPassword(
       String email, String password) async {
     final userCredential = await _firebaseAuth.signInWithCredential(
         EmailAuthProvider.credential(email: email, password: password));
