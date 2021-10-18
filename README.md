@@ -1,6 +1,6 @@
 # time_tracker
 
-A new Flutter project.
+Flutter application developed according to the course of Andrea Bizzotto.
 
 ## Getting Started
 
